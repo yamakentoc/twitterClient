@@ -7,19 +7,38 @@
 //
 
 import UIKit
+import TwitterKit
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        if let session = TWTRTwitter.sharedInstance().sessionStore.session() {
+            print(session.userID)
+        } else {
+            print("アカウントはありません")
+        }
+        
+        
+        TWTRTwitter.sharedInstance().logIn { session, error in
+            guard let session = session else {
+                if let error = error {
+                    print("エラーが起きました => \(error.localizedDescription)")
+                }
+                return
+            }
+            print("@\(session.userName)でログインしました")
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func tapTweet(_ sender: Any) {
+        TWTRComposer().show(from: self) { _ in }
+    }
+    
 }
 
