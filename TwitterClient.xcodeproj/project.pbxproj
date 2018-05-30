@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		150B503F20BD42B700E008ED /* TweetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150B503E20BD42B700E008ED /* TweetViewModel.swift */; };
+		150B504120BD450700E008ED /* AccountInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150B504020BD450700E008ED /* AccountInformationModel.swift */; };
 		1520619120BC1BA300CD0F38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1520619020BC1BA300CD0F38 /* AppDelegate.swift */; };
 		1520619320BC1BA300CD0F38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1520619220BC1BA300CD0F38 /* ViewController.swift */; };
 		1520619620BC1BA300CD0F38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1520619420BC1BA300CD0F38 /* Main.storyboard */; };
@@ -17,6 +19,8 @@
 
 /* Begin PBXFileReference section */
 		105F56FC34ACAAB0A61D103D /* Pods-TwitterClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-TwitterClient/Pods-TwitterClient.release.xcconfig"; sourceTree = "<group>"; };
+		150B503E20BD42B700E008ED /* TweetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TweetViewModel.swift; path = /Users/yamakentoc/Desktop/pro/swift/TwitterClient/TwitterClient/ViewModels/TweetViewModel.swift; sourceTree = "<absolute>"; };
+		150B504020BD450700E008ED /* AccountInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInformationModel.swift; sourceTree = "<group>"; };
 		1520618D20BC1BA300CD0F38 /* TwitterClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1520619020BC1BA300CD0F38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1520619220BC1BA300CD0F38 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +52,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		150B503720BD400000E008ED /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1520619220BC1BA300CD0F38 /* ViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		150B503820BD401000E008ED /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				150B503E20BD42B700E008ED /* TweetViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		150B503920BD403000E008ED /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				150B504020BD450700E008ED /* AccountInformationModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		1520618420BC1BA300CD0F38 = {
 			isa = PBXGroup;
 			children = (
@@ -70,7 +98,9 @@
 			isa = PBXGroup;
 			children = (
 				1520619020BC1BA300CD0F38 /* AppDelegate.swift */,
-				1520619220BC1BA300CD0F38 /* ViewController.swift */,
+				150B503920BD403000E008ED /* Models */,
+				150B503820BD401000E008ED /* ViewModels */,
+				150B503720BD400000E008ED /* Views */,
 				1520619420BC1BA300CD0F38 /* Main.storyboard */,
 				1520619720BC1BA400CD0F38 /* Assets.xcassets */,
 				1520619920BC1BA400CD0F38 /* LaunchScreen.storyboard */,
@@ -232,6 +262,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				150B504120BD450700E008ED /* AccountInformationModel.swift in Sources */,
+				150B503F20BD42B700E008ED /* TweetViewModel.swift in Sources */,
 				1520619320BC1BA300CD0F38 /* ViewController.swift in Sources */,
 				1520619120BC1BA300CD0F38 /* AppDelegate.swift in Sources */,
 			);
@@ -382,7 +414,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 65VW7XZNV5;
 				INFOPLIST_FILE = TwitterClient/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = yamakentoc.TwitterClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -401,7 +436,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 65VW7XZNV5;
 				INFOPLIST_FILE = TwitterClient/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = yamakentoc.TwitterClient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
