@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import TwitterKit
 import RxSwift
 import RxCocoa
 
@@ -22,6 +21,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = viewModel
+        viewModel.checkAccount()
     }
     
 }
