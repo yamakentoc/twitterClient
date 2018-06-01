@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     fileprivate let viewModel = TweetViewModel()
