@@ -6,7 +6,7 @@
 //  Copyright © 2018年 山口賢登. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 struct TweetInformation: Codable {
     //userのプロフ画像
@@ -20,5 +20,7 @@ struct TweetInformation: Codable {
     //いいねの数
     var favorite_count: Int = 0
     //リツイート数
-    var retweet_count: Int = 0
+    var retweet_count: Int = 0    
 }
+
+
