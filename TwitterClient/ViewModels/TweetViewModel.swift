@@ -35,7 +35,7 @@ class TweetViewModel: NSObject {
     func getTL(session: TWTRSession) {
         var clientError: NSError?
         let client = TWTRAPIClient.withCurrentUser()
-        let URLEndpoint = "https://api.twitter.com/1.1/statuses/user_timeline.json"
+        let URLEndpoint = "https://api.twitter.com/1.1/statuses///home_timeline.json"//user_timeline.json"
         let params = ["user_id":session.userID,"count": "100"]
         
         let request = client.urlRequest (
@@ -73,7 +73,6 @@ class TweetViewModel: NSObject {
                             getInfo.retweet_count = json[i]["retweet_count"].int!
                         }
                         self.items.value.append(getInfo)
-                        print(self.items.value[0].text)
                     }
                 } catch let jsonError as NSError {
                     print("json error: \(jsonError.localizedDescription)")
