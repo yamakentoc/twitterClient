@@ -22,6 +22,11 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = viewModel
         viewModel.checkAccount()
+        
+        viewModel.items.asObservable().bind(onNext: {_ in
+            self.tableView.reloadData()
+        })
+        .disposed(by: disposeBag)
     }
     
 }

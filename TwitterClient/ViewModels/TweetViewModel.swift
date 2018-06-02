@@ -12,11 +12,11 @@ import SwiftyJSON
 
 class TweetViewModel: NSObject {
     
-    var items = Variable<[String]>([])
+    var items = Variable<[TweetInformation]>([])
     var tweetInfo: [TweetInformation] = []
     
     override init() {
-        items.value.append("hoge")
+       
     }
     
     func checkAccount() {
@@ -36,7 +36,7 @@ class TweetViewModel: NSObject {
         var clientError: NSError?
         let client = TWTRAPIClient.withCurrentUser()
         let URLEndpoint = "https://api.twitter.com/1.1/statuses/user_timeline.json"
-        let params = ["user_id":session.userID,"count": "1"]
+        let params = ["user_id":session.userID,"count": "100"]
         
         let request = client.urlRequest (
             withMethod: "GET",
@@ -72,8 +72,8 @@ class TweetViewModel: NSObject {
                         if json[i]["retweet_count"].int != nil{
                             getInfo.retweet_count = json[i]["retweet_count"].int!
                         }
-                        self.tweetInfo.append(getInfo)
-                        print(self.tweetInfo)
+                        self.items.value.append(getInfo)
+                        print(self.items.value[0].text)
                     }
                 } catch let jsonError as NSError {
                     print("json error: \(jsonError.localizedDescription)")
@@ -90,7 +90,7 @@ extension TweetViewModel: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = items.value[indexPath.row]
+        cell.textLabel?.text = items.value[indexPath.row].text
         return cell
     }
 }
