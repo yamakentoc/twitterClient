@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import TwitterKit
 import SwiftyJSON
+import AlamofireImage
 
 class TweetViewModel: NSObject {
     
@@ -92,7 +93,17 @@ extension TweetViewModel: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TweetCell", for: indexPath) as! TweetCell
-        cell.tweetTextLabel.text = items.value[indexPath.row].text
+        let imageURL = URL(string: items.value[indexPath.row].image_url)!
+       // print("imageURL \(String(describing: imageURL))")
+        cell.userIcon.af_setImage(withURL: imageURL)
+//        } else {
+//            cell.userIcon.image = #imageLiteral(resourceName: "noImageUserIcon")
+//        }
+        cell.tweetText.text = items.value[indexPath.row].text
+        cell.tweetText.sizeToFit()
+        cell.userName.text = items.value[indexPath.row].name
+        cell.userID.text = "@\(items.value[indexPath.row].scname)"
+        
         return cell
     }
 }

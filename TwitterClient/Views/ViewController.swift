@@ -21,6 +21,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = viewModel
+        
         viewModel.checkAccount()
         
         viewModel.items.asObservable().bind(onNext: {_ in
@@ -32,13 +33,13 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth:CGFloat = self.view.bounds.width * 0.9
-        let cellHeight: CGFloat = self.view.bounds.height * 0.1
-        return CGSize(width: cellWidth, height: cellHeight)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let cellWidth:CGFloat = self.view.bounds.width * 0.9
+//        let cellHeight: CGFloat = self.view.bounds.height * 0.1
+//        return CGSize(width: cellWidth, height: cellHeight)
+//    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        return UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
     }
 }
