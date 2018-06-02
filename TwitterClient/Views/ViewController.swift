@@ -12,27 +12,34 @@ import RxCocoa
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     fileprivate let viewModel = TweetViewModel()
     fileprivate let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = viewModel
+        collectionView.delegate = self
+        collectionView.dataSource = viewModel
+        
         viewModel.checkAccount()
         
         viewModel.items.asObservable().bind(onNext: {_ in
-            self.tableView.reloadData()
+            self.collectionView.reloadData()
         })
         .disposed(by: disposeBag)
     }
     
 }
 
-extension ViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+extension ViewController: UICollectionViewDelegate {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let cellWidth:CGFloat = self.view.bounds.width * 0.9
+//        let cellHeight: CGFloat = self.view.bounds.height * 0.1
+//        return CGSize(width: cellWidth, height: cellHeight)
+//    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
     }
 }
