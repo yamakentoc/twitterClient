@@ -16,27 +16,30 @@ class TweetViewModel: NSObject {
     var tweetInfo: [TweetInformation] = []
     
     override init() {
-       
+        
     }
-    
     func checkAccount() {
-        TWTRTwitter.sharedInstance().logIn { session, error in
-            guard let session = session else {
-                if let error = error {
-                    print("エラーが起きました => \(error.localizedDescription)")
+        if let session = TWTRTwitter.sharedInstance().sessionStore.session() {
+            getTL(userID: session.userID)
+        } else {
+            TWTRTwitter.sharedInstance().logIn { session, error in
+                guard let session = session else {
+                    if let error = error {
+                        print("エラーが起きました => \(error.localizedDescription)")
+                    }
+                    return
                 }
-                return
+                print("@\(session.userName)でログインしました")
+                self.getTL(userID: session.userID)
             }
-            print("@\(session.userName)でログインしました")
-            self.getTL(session: session)
         }
     }
     
-    func getTL(session: TWTRSession) {
+    func getTL(userID: String) {
         var clientError: NSError?
         let client = TWTRAPIClient.withCurrentUser()
         let URLEndpoint = "https://api.twitter.com/1.1/statuses///home_timeline.json"//user_timeline.json"
-        let params = ["user_id":session.userID,"count": "100"]
+        let params = ["user_id":userID ,"count": "100"]
         
         let request = client.urlRequest (
             withMethod: "GET",
