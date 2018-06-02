@@ -53,7 +53,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TweetText" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jg8-P1-xQf">
-                            <rect key="frame" x="73" y="33" width="249" height="20.5"/>
+                            <rect key="frame" x="73" y="33" width="249" height="44"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -61,6 +61,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="jg8-P1-xQf" secondAttribute="bottom" constant="4" id="7ny-im-AaD"/>
                         <constraint firstItem="fva-Di-Woz" firstAttribute="leading" secondItem="fHB-yG-aCT" secondAttribute="leading" constant="8" id="GO0-gL-XYU"/>
                         <constraint firstAttribute="trailing" secondItem="jg8-P1-xQf" secondAttribute="trailing" constant="8" id="NUG-qf-2E2"/>
                         <constraint firstItem="Y6U-7Q-8qY" firstAttribute="top" secondItem="fHB-yG-aCT" secondAttribute="top" constant="8" id="PR4-yn-Sza"/>

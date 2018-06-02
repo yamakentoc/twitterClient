@@ -86,19 +86,20 @@ class TweetViewModel: NSObject {
     }
 }
 
-extension TweetViewModel: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension TweetViewModel: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.value.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TweetCell", for: indexPath) as! TweetCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as TweetCell
         let imageURL = URL(string: items.value[indexPath.row].image_url)!
-       // print("imageURL \(String(describing: imageURL))")
+        // print("imageURL \(String(describing: imageURL))")
         cell.userIcon.af_setImage(withURL: imageURL)
-//        } else {
-//            cell.userIcon.image = #imageLiteral(resourceName: "noImageUserIcon")
-//        }
+        //        } else {
+        //            cell.userIcon.image = #imageLiteral(resourceName: "noImageUserIcon")
+        //        }
         cell.tweetText.text = items.value[indexPath.row].text
         cell.tweetText.sizeToFit()
         cell.userName.text = items.value[indexPath.row].name
