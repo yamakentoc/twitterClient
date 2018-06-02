@@ -6,6 +6,9 @@ target 'TwitterClient' do
   use_frameworks!
   pod 'TwitterKit'
   pod 'AlamofireImage'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod "SwiftyJSON", ">= 2.2"
   # Pods for TwitterClient
 
 end

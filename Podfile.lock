@@ -2,27 +2,40 @@ PODS:
   - Alamofire (4.7.2)
   - AlamofireImage (3.3.1):
     - Alamofire (~> 4.5)
+  - RxCocoa (4.1.2):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.1.2)
+  - SwiftyJSON (4.1.0)
   - TwitterCore (3.1.0)
   - TwitterKit (3.3.0):
     - TwitterCore (>= 3.1.0)
 
 DEPENDENCIES:
   - AlamofireImage
+  - RxCocoa
+  - RxSwift
+  - SwiftyJSON (>= 2.2)
   - TwitterKit
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - AlamofireImage
+    - RxCocoa
+    - RxSwift
+    - SwiftyJSON
     - TwitterCore
     - TwitterKit
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
+  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   TwitterCore: 644d59e75abccb26cf0a9050d2c4dea0e5412241
   TwitterKit: a2e60ddcedbf54091eac6f27685ca7a87681e1d7
 
-PODFILE CHECKSUM: 7880a09504d9c631b293a28e0ccc1447cfb67043
+PODFILE CHECKSUM: 04ca7777a40ba57c7c32ff89d6cef4e49f60ba81
 
 COCOAPODS: 1.5.0
