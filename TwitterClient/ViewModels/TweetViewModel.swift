@@ -40,7 +40,7 @@ class TweetViewModel: NSObject {
         var clientError: NSError?
         let client = TWTRAPIClient.withCurrentUser()
         let URLEndpoint = "https://api.twitter.com/1.1/statuses///home_timeline.json"//user_timeline.json"
-        let params = ["user_id":userID ,"count": "10"]
+        let params = ["user_id":userID ,"count": "100"]
         
         let request = client.urlRequest (
             withMethod: "GET",
@@ -102,6 +102,12 @@ extension TweetViewModel: UITableViewDataSource {
         cell.tweetText.text = items.value[indexPath.row].text
         cell.userName.text = items.value[indexPath.row].name
         cell.userID.text = "@\(items.value[indexPath.row].scname)"
+        cell.selectionStyle = .none
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        tableView.estimatedRowHeight = 100 //セルの高さ
+        return UITableViewAutomaticDimension //自動設定
     }
 }

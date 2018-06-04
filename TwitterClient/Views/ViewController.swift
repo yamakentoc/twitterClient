@@ -21,8 +21,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = viewModel
-        tableView.estimatedRowHeight = 120
-        tableView.rowHeight = UITableViewAutomaticDimension
         viewModel.checkAccount()
         
         viewModel.items.asObservable().bind(onNext: {_ in

@@ -18,34 +18,29 @@ class TweetCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        //self.xibViewSet()
-    }
-    
-    override func setNeedsLayout() {
-        super.setNeedsLayout()
         self.xibViewSet()
     }
     
     internal func xibViewSet() {
         userIcon.layer.masksToBounds = true
         backView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner]
-        contentView.layer.masksToBounds = false
-        layer.masksToBounds = false
+        backView.layer.masksToBounds = false
+        backView.layer.masksToBounds = false
+        backView.layer.cornerRadius  = 12
+        backView.layer.shadowOffset = CGSize(width: 0, height: 3)
+        backView.layer.shadowOpacity = 0.4
+        backView.layer.shadowRadius = 5
 
-        layer.cornerRadius  = 12
-        layer.shadowOffset = CGSize(width: 0, height: 2)
-        layer.shadowOpacity = 0.15
-        layer.shadowRadius = 12
-
-        layer.shouldRasterize = true
-        layer.rasterizationScale = UIScreen.main.scale
+        backView.layer.shouldRasterize = true
+        backView.layer.rasterizationScale = UIScreen.main.scale
     }
+    
+    
     
     open override func layoutSubviews() {
         super.layoutSubviews()
-        
-        backView.layer.cornerRadius = 12
+        backView.layer.cornerRadius = 15
         userIcon.layer.cornerRadius = userIcon.bounds.width / 2
     }
-
+    
 }
