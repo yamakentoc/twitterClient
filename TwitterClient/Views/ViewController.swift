@@ -22,6 +22,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = viewModel
+        // self.tableView.register(UINib(nibName: "HogeCell", bundle: nil), forCellReuseIdentifier: "HogeCell")
         
         viewModel.checkAccount()
         

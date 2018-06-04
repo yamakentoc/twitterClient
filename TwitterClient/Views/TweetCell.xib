@@ -10,17 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TweetCell" customModule="TwitterClient" customModuleProvider="target">
-            <connections>
-                <outlet property="backView" destination="fHB-yG-aCT" id="y0p-sm-Kia"/>
-                <outlet property="tweetText" destination="jg8-P1-xQf" id="9uN-ZW-ZbA"/>
-                <outlet property="userID" destination="Y6U-7Q-8qY" id="VUg-o5-3Cb"/>
-                <outlet property="userIcon" destination="fva-Di-Woz" id="KWd-dX-JpH"/>
-                <outlet property="userName" destination="ZPI-eA-5KK" id="9LP-Ox-jv4"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="C3b-wz-85X">
+        <view contentMode="scaleToFill" id="C3b-wz-85X" customClass="TweetCell" customModule="TwitterClient" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="330" height="81"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -85,6 +77,13 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="q6B-6l-N1m"/>
+            <connections>
+                <outlet property="backView" destination="fHB-yG-aCT" id="DHS-bd-qgB"/>
+                <outlet property="tweetText" destination="jg8-P1-xQf" id="5uW-4q-eA8"/>
+                <outlet property="userID" destination="Y6U-7Q-8qY" id="92d-Zn-Ffd"/>
+                <outlet property="userIcon" destination="fva-Di-Woz" id="AQ6-95-EN5"/>
+                <outlet property="userName" destination="ZPI-eA-5KK" id="TKr-yO-Kqn"/>
+            </connections>
             <point key="canvasLocation" x="146" y="1.5"/>
         </view>
     </objects>

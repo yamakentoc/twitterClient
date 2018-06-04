@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetCell: UICollectionViewCell {
+class TweetCell: UITableViewCell {
 
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userID: UILabel!
@@ -16,20 +16,15 @@ class TweetCell: UICollectionViewCell {
     @IBOutlet weak var tweetText: UILabel!
     @IBOutlet weak var backView: UIView!
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.xibViewSet()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
+    override func awakeFromNib() {
+        super.awakeFromNib()
         self.xibViewSet()
     }
     
     internal func xibViewSet() {
-        if let view = Bundle.main.loadNibNamed("TweetCell", owner: self, options: nil)?.first as? UIView {
-            view.frame = self.bounds
-            view.backgroundColor = .clear
+//        if let view = Bundle.main.loadNibNamed("TweetCell", owner: self, options: nil)?.first as? UIView {
+//            view.frame = self.bounds
+//            view.backgroundColor = .clear
             userIcon.layer.masksToBounds = true
             backView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner]
             contentView.layer.masksToBounds = false
@@ -42,8 +37,8 @@ class TweetCell: UICollectionViewCell {
             
             layer.shouldRasterize = true
             layer.rasterizationScale = UIScreen.main.scale
-            self.addSubview(view)
-        }
+            //self.addSubview(view)
+    //    }
     }
     
     open override func layoutSubviews() {

@@ -40,7 +40,7 @@ class TweetViewModel: NSObject {
         var clientError: NSError?
         let client = TWTRAPIClient.withCurrentUser()
         let URLEndpoint = "https://api.twitter.com/1.1/statuses///home_timeline.json"//user_timeline.json"
-        let params = ["user_id":userID ,"count": "100"]
+        let params = ["user_id":userID ,"count": "10"]
         
         let request = client.urlRequest (
             withMethod: "GET",
@@ -93,17 +93,20 @@ extension TweetViewModel: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as TweetCell
-        let imageURL = URL(string: items.value[indexPath.row].image_url)!
-        // print("imageURL \(String(describing: imageURL))")
-        cell.userIcon.af_setImage(withURL: imageURL)
-        //        } else {
-        //            cell.userIcon.image = #imageLiteral(resourceName: "noImageUserIcon")
-        //        }
-        cell.tweetText.text = items.value[indexPath.row].text
-        cell.tweetText.sizeToFit()
-        cell.userName.text = items.value[indexPath.row].name
-        cell.userID.text = "@\(items.value[indexPath.row].scname)"
+        tableView.register(UINib(nibName: "TweetCell", bundle: nil), forCellReuseIdentifier: "TweetCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
+//        let imageURL = URL(string: items.value[indexPath.row].image_url)!
+//        // print("imageURL \(String(describing: imageURL))")
+//        cell.userIcon.af_setImage(withURL: imageURL)
+//        //        } else {
+//        //            cell.userIcon.image = #imageLiteral(resourceName: "noImageUserIcon")
+//        //        }
+//
+            cell.tweetText.text = "hogehoge"//items.value[indexPath.row].text
+        
+            //cell.tweetText.sizeToFit()
+//        cell.userName.text = items.value[indexPath.row].name
+//        cell.userID.text = "@\(items.value[indexPath.row].scname)"
         
         return cell
     }
