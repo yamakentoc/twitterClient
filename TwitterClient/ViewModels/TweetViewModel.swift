@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import TwitterKit
 import SwiftyJSON
+import AlamofireImage
 
 class TweetViewModel: NSObject {
     
@@ -16,27 +17,30 @@ class TweetViewModel: NSObject {
     var tweetInfo: [TweetInformation] = []
     
     override init() {
-       
+        
     }
-    
     func checkAccount() {
-        TWTRTwitter.sharedInstance().logIn { session, error in
-            guard let session = session else {
-                if let error = error {
-                    print("エラーが起きました => \(error.localizedDescription)")
+        if let session = TWTRTwitter.sharedInstance().sessionStore.session() {
+            getTL(userID: session.userID)
+        } else {
+            TWTRTwitter.sharedInstance().logIn { session, error in
+                guard let session = session else {
+                    if let error = error {
+                        print("エラーが起きました => \(error.localizedDescription)")
+                    }
+                    return
                 }
-                return
+                print("@\(session.userName)でログインしました")
+                self.getTL(userID: session.userID)
             }
-            print("@\(session.userName)でログインしました")
-            self.getTL(session: session)
         }
     }
     
-    func getTL(session: TWTRSession) {
+    func getTL(userID: String) {
         var clientError: NSError?
         let client = TWTRAPIClient.withCurrentUser()
-        let URLEndpoint = "https://api.twitter.com/1.1/statuses/user_timeline.json"
-        let params = ["user_id":session.userID,"count": "100"]
+        let URLEndpoint = "https://api.twitter.com/1.1/statuses///home_timeline.json"//user_timeline.json"
+        let params = ["user_id":userID ,"count": "10"]
         
         let request = client.urlRequest (
             withMethod: "GET",
@@ -73,7 +77,6 @@ class TweetViewModel: NSObject {
                             getInfo.retweet_count = json[i]["retweet_count"].int!
                         }
                         self.items.value.append(getInfo)
-                        print(self.items.value[0].text)
                     }
                 } catch let jsonError as NSError {
                     print("json error: \(jsonError.localizedDescription)")
@@ -89,8 +92,16 @@ extension TweetViewModel: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = items.value[indexPath.row].text
+        tableView.register(UINib(nibName: "TweetCell", bundle: nil), forCellReuseIdentifier: "TweetCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
+        if let imageURL = URL(string: items.value[indexPath.row].image_url) {
+            cell.userIcon.af_setImage(withURL: imageURL)
+        } else {
+            cell.userIcon.image = #imageLiteral(resourceName: "noImageUserIcon")
+        }
+        cell.tweetText.text = items.value[indexPath.row].text
+        cell.userName.text = items.value[indexPath.row].name
+        cell.userID.text = "@\(items.value[indexPath.row].scname)"
         return cell
     }
 }

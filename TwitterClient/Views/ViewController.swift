@@ -21,6 +21,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = viewModel
+        tableView.estimatedRowHeight = 120
+        tableView.rowHeight = UITableViewAutomaticDimension
         viewModel.checkAccount()
         
         viewModel.items.asObservable().bind(onNext: {_ in
@@ -32,7 +34,5 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
-    }
+
 }
