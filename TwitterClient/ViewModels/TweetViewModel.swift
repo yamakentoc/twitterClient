@@ -11,7 +11,7 @@ import TwitterKit
 import SwiftyJSON
 import AlamofireImage
 
-class TweetViewModel: NSObject {
+class TimeLineViewModel: NSObject {
     
     var items = Variable<[TweetInformation]>([])
     var tweetInfo: [TweetInformation] = []
@@ -86,7 +86,7 @@ class TweetViewModel: NSObject {
     }
 }
 
-extension TweetViewModel: UITableViewDataSource {
+extension TimeLineViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.value.count
     }
