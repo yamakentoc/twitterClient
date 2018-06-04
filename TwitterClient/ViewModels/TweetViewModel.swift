@@ -100,10 +100,8 @@ extension TweetViewModel: UITableViewDataSource {
             cell.userIcon.image = #imageLiteral(resourceName: "noImageUserIcon")
         }
         cell.tweetText.text = items.value[indexPath.row].text
-        //cell.tweetText.sizeToFit()
         cell.userName.text = items.value[indexPath.row].name
         cell.userID.text = "@\(items.value[indexPath.row].scname)"
-        
         return cell
     }
 }

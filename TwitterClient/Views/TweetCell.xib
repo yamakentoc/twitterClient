@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,11 +14,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="C3b-wz-85X" customClass="TweetCell" customModule="TwitterClient" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="330" height="81"/>
+            <rect key="frame" x="0.0" y="0.0" width="330" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHB-yG-aCT">
-                    <rect key="frame" x="0.0" y="0.0" width="330" height="81"/>
+                    <rect key="frame" x="8.5" y="8" width="313.5" height="84"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fva-Di-Woz">
                             <rect key="frame" x="8" y="8" width="57" height="57"/>
@@ -36,7 +37,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6U-7Q-8qY">
-                            <rect key="frame" x="126.5" y="8" width="195.5" height="21"/>
+                            <rect key="frame" x="126.5" y="8" width="179" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="3qA-kV-ynh"/>
                             </constraints>
@@ -44,14 +45,14 @@
                             <color key="textColor" red="0.52941176470588236" green="0.60784313725490191" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TweetText" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jg8-P1-xQf">
-                            <rect key="frame" x="73" y="33" width="249" height="44"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TweetText" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jg8-P1-xQf">
+                            <rect key="frame" x="73" y="33" width="232.5" height="47"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="jg8-P1-xQf" secondAttribute="bottom" constant="4" id="7ny-im-AaD"/>
                         <constraint firstItem="fva-Di-Woz" firstAttribute="leading" secondItem="fHB-yG-aCT" secondAttribute="leading" constant="8" id="GO0-gL-XYU"/>
@@ -68,12 +69,13 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="fHB-yG-aCT" firstAttribute="bottom" secondItem="q6B-6l-N1m" secondAttribute="bottom" id="1hQ-ke-OFC"/>
-                <constraint firstItem="fHB-yG-aCT" firstAttribute="top" secondItem="q6B-6l-N1m" secondAttribute="top" id="206-M2-OCD"/>
-                <constraint firstItem="fHB-yG-aCT" firstAttribute="leading" secondItem="q6B-6l-N1m" secondAttribute="leading" id="3RQ-Bm-bsP"/>
-                <constraint firstItem="fHB-yG-aCT" firstAttribute="trailing" secondItem="q6B-6l-N1m" secondAttribute="trailing" id="9cf-wI-78Y"/>
+                <constraint firstItem="fHB-yG-aCT" firstAttribute="centerX" secondItem="C3b-wz-85X" secondAttribute="centerX" id="4MG-6j-us1"/>
+                <constraint firstItem="q6B-6l-N1m" firstAttribute="bottom" secondItem="fHB-yG-aCT" secondAttribute="bottom" constant="8" id="BR2-Oo-beY"/>
+                <constraint firstItem="fHB-yG-aCT" firstAttribute="top" secondItem="q6B-6l-N1m" secondAttribute="top" constant="8" id="KfV-Bg-91M"/>
+                <constraint firstItem="fHB-yG-aCT" firstAttribute="width" secondItem="C3b-wz-85X" secondAttribute="width" multiplier="0.95" id="nuv-yA-ueQ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="q6B-6l-N1m"/>
@@ -84,7 +86,7 @@
                 <outlet property="userIcon" destination="fva-Di-Woz" id="AQ6-95-EN5"/>
                 <outlet property="userName" destination="ZPI-eA-5KK" id="TKr-yO-Kqn"/>
             </connections>
-            <point key="canvasLocation" x="146" y="1.5"/>
+            <point key="canvasLocation" x="114" y="-48"/>
         </view>
     </objects>
 </document>

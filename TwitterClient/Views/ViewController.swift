@@ -12,7 +12,6 @@ import RxCocoa
 
 class ViewController: UIViewController {
     
-    
     @IBOutlet weak var tableView: UITableView!
     
     fileprivate let viewModel = TweetViewModel()
@@ -22,8 +21,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = viewModel
-        // self.tableView.register(UINib(nibName: "HogeCell", bundle: nil), forCellReuseIdentifier: "HogeCell")
-        
+        tableView.estimatedRowHeight = 120
+        tableView.rowHeight = UITableViewAutomaticDimension
         viewModel.checkAccount()
         
         viewModel.items.asObservable().bind(onNext: {_ in
@@ -35,5 +34,5 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UITableViewDelegate {
-    
+
 }
