@@ -92,21 +92,17 @@ extension TweetViewModel: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
         tableView.register(UINib(nibName: "TweetCell", bundle: nil), forCellReuseIdentifier: "TweetCell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
-//        let imageURL = URL(string: items.value[indexPath.row].image_url)!
-//        // print("imageURL \(String(describing: imageURL))")
-//        cell.userIcon.af_setImage(withURL: imageURL)
-//        //        } else {
-//        //            cell.userIcon.image = #imageLiteral(resourceName: "noImageUserIcon")
-//        //        }
-//
-            cell.tweetText.text = "hogehoge"//items.value[indexPath.row].text
-        
-            //cell.tweetText.sizeToFit()
-//        cell.userName.text = items.value[indexPath.row].name
-//        cell.userID.text = "@\(items.value[indexPath.row].scname)"
+        if let imageURL = URL(string: items.value[indexPath.row].image_url) {
+            cell.userIcon.af_setImage(withURL: imageURL)
+        } else {
+            cell.userIcon.image = #imageLiteral(resourceName: "noImageUserIcon")
+        }
+        cell.tweetText.text = items.value[indexPath.row].text
+        //cell.tweetText.sizeToFit()
+        cell.userName.text = items.value[indexPath.row].name
+        cell.userID.text = "@\(items.value[indexPath.row].scname)"
         
         return cell
     }
