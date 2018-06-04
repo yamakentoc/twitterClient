@@ -102,6 +102,7 @@ extension TweetViewModel: UITableViewDataSource {
         cell.tweetText.text = items.value[indexPath.row].text
         cell.userName.text = items.value[indexPath.row].name
         cell.userID.text = "@\(items.value[indexPath.row].scname)"
+        cell.selectionStyle = .none
         return cell
     }
     
