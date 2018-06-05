@@ -104,7 +104,7 @@ extension TimeLineViewModel: UITableViewDataSource {
             cell.userIcon.image = #imageLiteral(resourceName: "noImageUserIcon")
         }
         if let mediaURL = URL(string: items.value[indexPath.row].media_url) {
-            
+            cell.tweetImage.af_setImage(withURL: mediaURL)
         }
         cell.tweetText.text = items.value[indexPath.row].text
         cell.userName.text = items.value[indexPath.row].name
