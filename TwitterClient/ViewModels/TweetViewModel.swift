@@ -39,8 +39,8 @@ class TimeLineViewModel: NSObject {
     func getTL(userID: String) {
         var clientError: NSError?
         let client = TWTRAPIClient.withCurrentUser()
-        let URLEndpoint = "https://api.twitter.com/1.1/statuses///home_timeline.json"//user_timeline.json"
-        let params = ["user_id":userID ,"count": "100"]
+        let URLEndpoint = "https://api.twitter.com/1.1/statuses///user_timeline.json"//user_timeline.json"
+        let params = ["user_id":userID ,"count": "2"]
         
         let request = client.urlRequest (
             withMethod: "GET",
@@ -56,6 +56,7 @@ class TimeLineViewModel: NSObject {
             if let data = data {
                 do {
                     var json = try JSON(data: data)
+                    print("json--\(json)")
                     for i in (0..<json.count){
                         var getInfo = TweetInformation()
                         if json[i]["user"]["profile_image_url"].string != nil{
@@ -75,6 +76,9 @@ class TimeLineViewModel: NSObject {
                         }
                         if json[i]["retweet_count"].int != nil{
                             getInfo.retweet_count = json[i]["retweet_count"].int!
+                        }
+                        if json[i]["entities"]["media"][0]["media_url"].string != nil {
+                            getInfo.media_url = json[i]["entities"]["media"][0]["media_url"].string!
                         }
                         self.items.value.append(getInfo)
                     }
@@ -98,6 +102,9 @@ extension TimeLineViewModel: UITableViewDataSource {
             cell.userIcon.af_setImage(withURL: imageURL)
         } else {
             cell.userIcon.image = #imageLiteral(resourceName: "noImageUserIcon")
+        }
+        if let mediaURL = URL(string: items.value[indexPath.row].media_url) {
+            
         }
         cell.tweetText.text = items.value[indexPath.row].text
         cell.userName.text = items.value[indexPath.row].name
