@@ -40,7 +40,7 @@ class TimeLineViewModel: NSObject {
         var clientError: NSError?
         let client = TWTRAPIClient.withCurrentUser()
         let URLEndpoint = "https://api.twitter.com/1.1/statuses///home_timeline.json"//user_timeline.json"
-        let params = ["user_id":userID ,"count": "20"]
+        let params = ["user_id":userID ,"count": "100"]
         
         let request = client.urlRequest (
             withMethod: "GET",
@@ -79,8 +79,6 @@ class TimeLineViewModel: NSObject {
                         }
                         if json[i]["entities"]["media"][0]["media_url"].string != nil {
                             getInfo.media_url = json[i]["entities"]["media"][0]["media_url"].string!
-                        } else {
-                            getInfo.media_url = ""
                         }
                         self.items.value.append(getInfo)
                     }
@@ -98,28 +96,21 @@ extension TimeLineViewModel: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        tableView.register(UINib(nibName: "TweetCell", bundle: nil), forCellReuseIdentifier: "TweetCell")
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
-        if let imageURL = URL(string: items.value[indexPath.row].image_url) {
-            cell.userIcon.af_setImage(withURL: imageURL)
+        if items.value[indexPath.row].media_url == "" {
+            tableView.register(UINib(nibName: "TweetCell", bundle: nil), forCellReuseIdentifier: "TweetCell")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
+            cell.configureCell(tweetInfo: items.value[indexPath.row])
+            return cell
         } else {
-            cell.userIcon.image = #imageLiteral(resourceName: "noImageUserIcon")
+            tableView.register(UINib(nibName: "TweetImageCell", bundle: nil), forCellReuseIdentifier: "TweetImageCell")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TweetImageCell", for: indexPath) as! TweetImageCell
+            cell.configureCell(tweetInfo: items.value[indexPath.row])
+            return cell
         }
-        if items.value[indexPath.row].media_url != "" {
-            if let mediaURL = URL(string: items.value[indexPath.row].media_url) {
-                
-                cell.tweetImage.af_setImage(withURL: mediaURL)
-            }
-        }
-        cell.tweetText.text = items.value[indexPath.row].text
-        cell.userName.text = items.value[indexPath.row].name
-        cell.userID.text = "@\(items.value[indexPath.row].scname)"
-        cell.selectionStyle = .none
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        tableView.estimatedRowHeight = 100 //セルの高さ
+        tableView.estimatedRowHeight = 10 //セルの高さ
         return UITableViewAutomaticDimension //自動設定
     }
 }
