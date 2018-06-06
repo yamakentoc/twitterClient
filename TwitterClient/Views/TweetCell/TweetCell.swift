@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class TweetCell: UITableViewCell {
     
@@ -19,6 +20,18 @@ class TweetCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.xibViewSet()
+    }
+    
+    func configureCell(tweetInfo: TweetInformation) {
+        if let imageURL = URL(string: tweetInfo.image_url) {
+            userIcon.af_setImage(withURL: imageURL)
+        } else {
+            userIcon.image = #imageLiteral(resourceName: "noImageUserIcon")
+        }
+        tweetText.text = tweetInfo.text
+        userName.text = tweetInfo.name
+        userID.text = "@\(tweetInfo.scname)"
+        selectionStyle = .none
     }
     
     internal func xibViewSet() {

@@ -9,12 +9,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TwitterClient/Views/TimeLineViewController.swift"
-            timestampString = "549813710.235091"
+            filePath = "TwitterClient/ViewModels/TweetViewModel.swift"
+            timestampString = "549954452.2120301"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37">
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -20,7 +20,9 @@ struct TweetInformation: Codable {
     //いいねの数
     var favorite_count: Int = 0
     //リツイート数
-    var retweet_count: Int = 0    
+    var retweet_count: Int = 0
+    //画像
+    var media_url: String = ""
 }
 
 
