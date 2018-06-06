@@ -10,11 +10,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class ViewController: UIViewController {
+class TimeLineViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    fileprivate let viewModel = TweetViewModel()
+    fileprivate let viewModel = TimeLineViewModel()
     fileprivate let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -31,6 +31,6 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: UITableViewDelegate {
+extension TimeLineViewController: UITableViewDelegate {
 
 }

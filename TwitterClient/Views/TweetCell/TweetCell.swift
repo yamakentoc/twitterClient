@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class TweetCell: UITableViewCell {
     
@@ -15,10 +16,26 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var userIcon: UIImageView!
     @IBOutlet weak var tweetText: UILabel!
     @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var favoriteCount: UILabel!
+    @IBOutlet weak var retweetCount: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.xibViewSet()
+    }
+    
+    func configureCell(tweetInfo: TweetInformation) {
+        if let imageURL = URL(string: tweetInfo.image_url) {
+            userIcon.af_setImage(withURL: imageURL)
+        } else {
+            userIcon.image = #imageLiteral(resourceName: "noImageUserIcon")
+        }
+        tweetText.text = tweetInfo.text
+        userName.text = tweetInfo.name
+        userID.text = "@\(tweetInfo.scname)"
+        favoriteCount.text = "\(tweetInfo.favorite_count)"
+        retweetCount.text = "\(tweetInfo.retweet_count)"
+        selectionStyle = .none
     }
     
     internal func xibViewSet() {
