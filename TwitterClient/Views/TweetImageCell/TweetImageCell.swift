@@ -43,6 +43,7 @@ class TweetImageCell: UITableViewCell {
     
     internal func xibViewSet() {
         userIcon.layer.masksToBounds = true
+        tweetImage.layer.masksToBounds = true
         backView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner]
         backView.layer.masksToBounds = false
         backView.layer.masksToBounds = false
@@ -61,6 +62,7 @@ class TweetImageCell: UITableViewCell {
         super.layoutSubviews()
         backView.layer.cornerRadius = 15
         userIcon.layer.cornerRadius = userIcon.bounds.width / 2
+        tweetImage.layer.cornerRadius = 15
     }
     
 }
