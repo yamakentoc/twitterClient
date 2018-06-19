@@ -21,7 +21,7 @@ class TimeLineViewModel: NSObject {
     }
     func checkAccount() {
         if let session = TWTRTwitter.sharedInstance().sessionStore.session() {
-            getTL(userID: session.userID)
+            getTL(userID: session.userID, refresh: false)
         } else {
             TWTRTwitter.sharedInstance().logIn { session, error in
                 guard let session = session else {
@@ -31,12 +31,12 @@ class TimeLineViewModel: NSObject {
                     return
                 }
                 print("@\(session.userName)でログインしました")
-                self.getTL(userID: session.userID)
+                self.getTL(userID: session.userID, refresh: false)
             }
         }
     }
     
-    func getTL(userID: String) {
+    func getTL(userID: String, refresh: Bool) {
         var clientError: NSError?
         let client = TWTRAPIClient.withCurrentUser()
         let URLEndpoint = "https://api.twitter.com/1.1/statuses///home_timeline.json"//user_timeline.json"
@@ -55,6 +55,7 @@ class TimeLineViewModel: NSObject {
             }
             if let data = data {
                 do {
+                    refresh == true ? self.items.value.removeAll() : nil
                     var json = try JSON(data: data)
                     print("json--\(json)")
                     for i in (0..<json.count){
@@ -88,6 +89,19 @@ class TimeLineViewModel: NSObject {
             }
         }
     }
+    
+   @objc func refresh(_ sender: UIRefreshControl) {
+        if let session = TWTRTwitter.sharedInstance().sessionStore.session() {
+            getTL(userID: session.userID, refresh: true)
+            refreshControlValueChanged(sender: sender)
+        }
+    }
+    func refreshControlValueChanged(sender: UIRefreshControl) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            sender.endRefreshing()
+        })
+    }
+    
 }
 
 extension TimeLineViewModel: UITableViewDataSource {
